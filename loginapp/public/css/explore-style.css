@@ -1,0 +1,103 @@
+
+
+* { box-sizing: border-box; }
+
+/* force scrollbar */
+html { 
+	overflow-y: scroll; }
+
+body { 
+	font-family: sans-serif;
+	margin-left:5px;
+	margin-right: 5px;
+ }
+
+body h1{ 
+	margin-left: 20px; }
+
+/* ---- grid ---- */
+
+.grid {
+  background: #fff;
+}
+
+/* clear fix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- .grid-item ---- */
+
+.grid-sizer,
+.grid-item {
+	/*renee: 3 or four columns? i think three is less overwhelming*/
+  width: 33.3333%;
+}
+
+.grid-item {
+  float: left;
+}
+
+.grid-item img {
+  display: block;
+  max-width: 100%;
+  padding: 5px;/*renee: added*/
+}
+/*for the explore, profile, and logout links*/
+.explore{
+  top:0px;
+  margin-right: 10px;
+}
+
+.logout{
+  top:0px;
+  margin-right: 10px;
+}
+
+.profile{
+  top:0px;
+  margin-right: 10px;
+}
+
+.login{
+  top:0px;
+  margin-right: -10px;
+}
+
+.register{
+  top:0px;
+  margin-right: 20px;
+  color: #ff884d;
+}
+a:link{
+  color: #ff884d;
+}
+
+a:visited{
+  color: #ff661a;
+}
+
+.nav: after {clear: both;}
+
+.nav-pills > li {
+  list-style-type: none;
+  float: left;
+}
+.nav-pills > li > a {
+  border-radius: 4px;
+}
+.nav-pills > li + li {
+  margin-left: 2px;
+}
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+  color: #fff;
+  background-color: #337ab7;
+}
+
+.pull-right {
+  float: right !important;
+}
