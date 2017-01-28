@@ -1,3 +1,5 @@
+//user model 
+
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 
@@ -5,7 +7,8 @@ var bcrypt = require('bcryptjs');
 var UserSchema = mongoose.Schema({
 	username: {
 		type: String,
-		index:true
+		index:true,
+		unique:true,
 	},
 	password: {
 		type: String
@@ -15,8 +18,18 @@ var UserSchema = mongoose.Schema({
 	},
 	name: {
 		type: String
-	}
-});
+	},
+	photos:[
+			{
+			id: String,
+			src : String,
+			longitude : String,
+			latitude : String,
+			address: String,
+			city: String
+		}
+	]//photo object within photo array containing (eventual) id-objects (which contain id, url/source, longitude and latitude)
+	});
 
 var User = module.exports = mongoose.model('User', UserSchema);
 
@@ -37,6 +50,11 @@ module.exports.getUserByUsername = function(username, callback){
 module.exports.getUserById = function(id, callback){
 	User.findById(id, callback);
 }
+
+// module.exports.updatePhotoInfo = function (id, api_key){
+// 	User.findByIdAndUpdate(id, );
+// }
+
 
 module.exports.comparePassword = function(candidatePassword, hash, callback){
 	bcrypt.compare(candidatePassword, hash, function(err, isMatch) {
