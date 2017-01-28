@@ -1,2 +1,51 @@
- <h2 class="page-header">Explore</h2>
-<p>Welcome to your explore feed</p>  
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	</head> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>	
+	<script src = "http://imagesloaded.desandro.com/imagesloaded.pkgd.js"></script>
+	<script src="/js/masonry.pkgd.min.js"></script>
+  <link rel="stylesheet" href="/css/explore-style.css" />
+<body>
+<h1>Explore</h1>
+<!-- currently hardcoding images from user page -->
+<a href="/map">
+<button type = "button" onclick= "submitToBackend()">Mango!</button></a>
+</a>
+<div class="grid">
+  <div class="grid-item">
+    <img src="/images/fried.png" id = "fried"/>
+  </div>
+  <div class="grid-item">
+    <img src="/images/glass.png" id = "glass" />
+  </div>
+  <div class="grid-item">
+    <img src="/images/matchacrepecake.png" id = "matchacrepe"/>
+  </div>
+  <div class="grid-item">
+    <img src="/images/nets.png" id = "nets" />
+  </div>
+  <div class="grid-item">
+    <img src="/images/tower.png" id = "tower"/>
+  </div>
+  <div class="grid-item">
+    <img src="/images/towerentrance.png" id = "towerentrance" />
+  </div>
+   <div class="grid-item">
+    <img src="/images/oysters.png" id = "oysters"/>
+  </div>
+   <div class="grid-item">
+    <img src="/images/beachsunset.png" id = "beachsunset"/>
+  </div>
+   <div class="grid-item">
+    <img src="/images/bluelights.png" id = "bluelights"/>
+  </div>
+</div>
+<!-- after images loaded, run scripts -->
+	<script src="/js/masonry.js"></script>
+	<script src = "/js/imageListener.js"></script>
+
+</body> 
+</html>
