@@ -3,9 +3,16 @@ var router = express.Router();
 var User = require('../models/user');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var userProfile = require('../models/user');
 
 
-var User = require('../models/user');
+
+// var User = require('../models/user');
+router.use(function(req, res, next){
+  console.log("request made in users.js");
+  next();
+})
+
 /* Register*/
 router.get('/register', function(req, res, next) {
   res.render('register');
@@ -15,7 +22,8 @@ router.get('/login', function(req,res){
 	res.render('login');
 });
 
-/* Register Iser*/
+
+/* Register User*/
 router.post('/register', function(req, res, next) {
   var name = req.body.name;
   var email = req.body.email;
@@ -39,11 +47,12 @@ router.post('/register', function(req, res, next) {
   		errors: errors
   	});
   }else{
-  	var newUser = new User({
+  	var newUser = new User({//update schema
   		name: name,
   		email: email,
   		username: username,
-  		password: password
+  		password: password,
+      picture: pic,
   	});
   	User.createUser(newUser, function(err,user){
   		if(err) throw err;
@@ -55,6 +64,7 @@ router.post('/register', function(req, res, next) {
   	res.redirect('/users/login');
   }
 });
+
 //from passport, gets username, finds if exists
 passport.use(new LocalStrategy(
   function(username, password, done) {
@@ -85,6 +95,11 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
+var userProf = require('./userProfile');
+
+router.use('/userProfile', userProf);
+
+
 router.post('/login',
   passport.authenticate('local', {successRedirect:'/', failureRedirect:'/users/login',failureFlash: true}),
   function(req, res) {
@@ -96,6 +111,8 @@ router.get('/logout', function(req,res){
 	req.flash('success_msg', 'You are logged out');
 	res.redirect('/users/login');
 });
+
+
 
 
 module.exports = router;
