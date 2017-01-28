@@ -10,11 +10,14 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
+var options = { promiseLibrary: require('bluebird') };
 mongoose.connect('mongodb://localhost/loginapp');
 var db = mongoose.connection;
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var userProf = require('./routes/userProfile');
+var mangoMap = require('./routes/map');
 
 //Init App
 var app = express();
@@ -23,6 +26,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', exphbs({defaultLayout: 'layout'}));
 app.set('view engine', 'handlebars');
+
 
 // // BodyParser Middleware
 app.use(bodyParser.json());
@@ -75,13 +79,19 @@ app.use(function (req, res, next) {
 });
 
 
+// Set Port
+app.set('port', (process.env.PORT || 2000));
+
+app.listen(app.get('port'), function(){
+  console.log('Server started on port '+ app.get('port'));
+});
+
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/map', mangoMap);
+app.use('/userProfile', userProf);
 
-// Set Port
-app.set('port', (process.env.PORT || 3000));
 
-app.listen(app.get('port'), function(){
-  console.log('Server started on port '+app.get('port'));
-});
+
+
