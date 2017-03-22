@@ -1,0 +1,192 @@
+/* Space out content a bit */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+/*  padding-right: 15px;
+  padding-left: 15px;*/
+}
+
+/* Custom page header */
+.header {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e5e5;
+
+}
+/* Make the masthead heading the same height as the navigation */
+.form-group h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  line-height: 20px;
+  color: #8c8a8f;
+  text-align: center;
+}
+.form-group h6 {
+  margin-top: 0;
+  margin-bottom: 0px;
+  line-height: 40px;
+  text-align: center;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  /*border-top: 1px solid #e5e5e5;*/
+}
+
+/* Customize container */
+@media (min-width: 280px) {
+  .container {
+    max-width: 310px;
+  }
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  /*border-bottom: 1px solid #e5e5e5;*/
+;
+}
+.jumbotron .btn {
+  padding: 14px 24px;
+  font-size: 21px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 250px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 10px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+.page-header{
+  margin-top:0;
+}
+
+footer{
+  position: fixed;
+  bottom: 20px;
+  margin-left:30px;
+}
+/*explore, logout, login, &register links*/
+.explore{
+  position: fixed;
+  top:0px;
+  margin-right: 0px;
+}
+
+.logout{
+  position: fixed;
+  top:0px;
+  margin-right: 20px;
+}
+
+.login{
+  position: fixed;
+  top:0px;
+  margin-right: -10px;
+}
+
+.register{
+  position: fixed;
+  top:0px;
+  margin-right: 20px;
+  color: #ff884d;
+}
+
+/*links*/
+a:link{
+  color: #ff884d;
+}
+
+a:visited{
+  color: #ff661a;
+}
+/*username & login padding*/
+#fullname{
+  margin-bottom: 5px;
+}
+
+#username{
+  margin-bottom: 5px;
+}
+
+#email{
+  margin-bottom: 5px;
+}
+
+#password{
+  margin-bottom: 5px;
+}
+
+#password2{
+  margin-bottom: 0px;
+}
+
+#login{
+  background-color: #ff7733;
+  margin-top: 10px;
+  width: 100%;
+  font: #fff;
+  letter-spacing: 0.0625em;
+}
+
+
+
+#signup{
+  background-color: #ff7733;
+  width: 100%;
+  font: #fff;
+  margin-top: 10px;
+  letter-spacing: 0.0625em;
+}
+
+/*register & login box*/
+
+#registerbox{
+  background-color: #fff;
+  padding: 20px 20px 20px 20px;/*renee: added for login/registration*/
+  -webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.15);/*renee: added for login/registration*/
+  -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.15);/*renee: added for login/registration*/
+  box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.15);/*renee: added for login/registration*/
+}
+
+#loginbox{
+  background-color: #fff;/*renee: added for login/registration*/
+  padding: 20px 20px 20px 20px;/*renee: added for login/registration*/
+  -webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.15);/*renee: added for login/registration*/
+  -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.15);/*renee: added for login/registration*/
+  box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.15);/*renee: added for login/registration*/
+}
+Contact GitHub API Training Shop Blog About

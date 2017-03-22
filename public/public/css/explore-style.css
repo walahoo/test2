@@ -1,0 +1,167 @@
+* { box-sizing: border-box; }
+
+/* force scrollbar */
+html { 
+  overflow-y: scroll; }
+
+body { 
+  font-family: sans-serif;
+  margin-left:5px;
+  margin-right: 5px;
+ }
+
+body h1{ 
+  margin-left: 20px; }
+
+/* ---- grid ---- */
+
+.grid {
+  background: #fff;
+}
+
+/* clear fix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- .grid-item ---- */
+
+.grid-sizer,
+.grid-item {
+  /*renee: 3 or four columns? i think three is less overwhelming*/
+  width: 33.3333%;
+}
+
+.grid-item {
+  float: left;
+}
+
+.grid-item img {
+  display: block;
+  max-width: 100%;
+  padding: 5px;/*renee: added*/
+}
+/*for the explore, profile, and logout links*/
+.explore{
+  top:0px;
+  margin-right: 10px;
+}
+
+.logout{
+  top:0px;
+  margin-right: 10px;
+}
+
+.profile{
+  top:0px;
+  margin-right: 10px;
+}
+
+.login{
+  top:0px;
+  margin-right: -10px;
+}
+
+.register{
+  top:0px;
+  margin-right: 20px;
+  color: #ff884d;
+}
+a:link{
+  color: #ff884d;
+}
+
+a:visited{
+  color: #ff661a;
+}
+
+.nav: after {clear: both;}
+
+.nav-pills > li {
+  list-style-type: none;
+  float: left;
+}
+.nav-pills > li > a {
+  border-radius: 4px;
+}
+.nav-pills > li + li {
+  margin-left: 2px;
+}
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+  color: #fff;
+  background-color: #337ab7;
+}
+
+.pull-right {
+  float: right !important;
+}
+
+footer{
+  position: fixed;
+  bottom: 20px;
+  margin-left:30px;
+}
+
+/*modal*/
+/* The Modal (background) */
+body, .modal-open .page-container, .modal-open .page-container .navbar-fixed-top, .modal-open .modal-container {
+    overflow-y: scroll;
+}
+@media (max-width: 979px) {
+    .modal-open .page-container .navbar-fixed-top {
+        overflow-y: visible;
+    }
+}
+
+/*from google api*/
+#map-canvas {
+    height: 400px;
+}
+
+#right-panel {
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+#right-panel select, #right-panel input {
+  font-size: 15px;
+}
+
+#right-panel select {
+  width: 100%;
+}
+
+#right-panel i {
+  font-size: 12px;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+#map {
+  height: 100%;
+  float: left;
+  width: 500px;
+  z-index: 5;
+  height: 500px;
+}
+#right-panel {
+  margin: 20px;
+  border-width: 2px;
+  width: 20%;
+  height: 400px;
+  float: left;
+  text-align: left;
+  padding-top: 0;
+}
+#directions-panel {
+  margin-top: 10px;
+  background-color: #FFEE77;
+  padding: 10px;
+}
