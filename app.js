@@ -10,17 +10,29 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
+var multer = require('multer');
+var formidable = require('formidable');
+var util = require('util');
 var options = { promiseLibrary: require('bluebird') };
-mongoose.connect('mongodb://localhost/loginapp');
+
+mongoose.connect('mongodb://localhost/test2');
+
+// for uploading images
+var fs = require('fs');
 var db = mongoose.connection;
+
+var imageInfo = fs.readFileSync('./public/images/imageinfo/imageAddress.json');
+var words = JSON.parse(imageInfo);
+// console.log(words);
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var userProf = require('./routes/userProfile');
-var mangoMap = require('./routes/map');
+// var uploads = require('./routes/uploads');
 
 //Init App
 var app = express();
+
 
 //View Engine
 app.set('views', path.join(__dirname, 'views'));
@@ -32,6 +44,7 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+// app.use(express.bodyParser({uploadDir:'/images/uploads'}));
 
 
 // Set Static Folder
@@ -48,7 +61,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Express Validator
+// // Express Validator
 app.use(expressValidator({
   errorFormatter: function(param, msg, value) {
       var namespace = param.split('.')
@@ -79,6 +92,47 @@ app.use(function (req, res, next) {
 });
 
 
+// Multer 
+var storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, './public/images/uploads/');
+    },
+    filename: function(req, file, cb) {
+        if (!file.originalname.match(/\.(png|jpeg|jpg)$/)) {
+            var err = new Error();
+            err.code = 'filetype';
+            return cb(err);
+        } else {
+            cb(null, file.originalname);
+        }
+    }
+});
+var upload = multer({
+    storage: storage,
+    limits: { fileSize: 10000000 }
+});
+
+
+app.post('/', upload.single('file'),function(req,res){
+  var prevPhotos = fs.readFileSync('./public/images/imageinfo/imageAddress.json');
+  var info = JSON.parse(prevPhotos);
+    // console.log(JSON.stringify(prevPhotos));
+    // console.log(JSON.parse(prevPhotos));
+    var photoInfo = JSON.parse(JSON.stringify(req.body));
+    var name = photoInfo.fileName;
+    var location = photoInfo.address;
+    info[name] = location;
+
+    fs.writeFile('./public/images/imageinfo/imageAddress.json',JSON.stringify(info, null, 2), finished);
+
+    function finished(err){
+        console.log('all set.');
+      }
+    res.render('index');
+});
+
+
+
 // Set Port
 app.set('port', (process.env.PORT || 2000));
 
@@ -87,11 +141,7 @@ app.listen(app.get('port'), function(){
 });
 
 
+
 app.use('/', routes);
 app.use('/users', users);
-app.use('/map', mangoMap);
 app.use('/userProfile', userProf);
-
-
-
-
